@@ -1,0 +1,23 @@
+[
+  {
+    "id": "6c15dc30-3d63-4f65-8d28-df267574d678",
+    "name": "Hugo Boss",
+    "phone": "+380989889898",
+    "email": "hugo@mail.net",
+    "job": "Model"
+  },
+  {
+    "id": "625768cd-28f8-49e1-8445-9d4ca9245efb",
+    "name": "Patricia Kaas",
+    "phone": "+380999990909",
+    "email": "kaas@mail.net",
+    "job": "Singer"
+  },
+  {
+    "id": "6d15c557-3759-471c-99f7-2fd698143074",
+    "name": "Jean Reno",
+    "phone": "+380979979797",
+    "email": "reno@mail.net",
+    "job": "Actor"
+  }
+]
