@@ -1,9 +1,10 @@
 import 'dotenv/config';
 import app from './app.js';
+import { getEnvVar } from './utils/getEnvVar.js';
 
 import { initDataBaseConnection } from './db.js';
 
-const PORT = process.env.PORT || 9090;
+const PORT = getEnvVar('PORT', 9090);
 
 async function bootstrap() {
   try {

@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const DB_URL = process.env.DB_URL;
+import { getEnvVar } from './utils/getEnvVar.js';
+
+const DB_URL = getEnvVar('DB_URL');
 
 //   'mongodb+srv://mharchenko:VflFhYzuslkohH2w@cluster0.p6aqd.mongodb.net/university?retryWrites=true&w=majority&appName=Cluster0';
 
