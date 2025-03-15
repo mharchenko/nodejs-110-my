@@ -1,11 +1,29 @@
 import Student from '../models/student.js';
 
-export async function getStudents({ page, perPage }) {
+export async function getStudents({
+  page,
+  perPage,
+  sortBy,
+  sortOrder,
+  filter,
+}) {
   const skip = page > 0 ? (page - 1) * perPage : 0;
 
+  const StudentQuery = Student.find();
+
+  if (typeof filter.minYear !== 'undefined') {
+    StudentQuery.where('year').gte(filter.minYear);
+  }
+
+  if (typeof filter.maxYear !== 'undefined') {
+    StudentQuery.where('year').lte(filter.maxYear);
+  }
+
   const [total, students] = await Promise.all([
-    Student.countDocuments(),
-    Student.find().skip(skip).limit(perPage),
+    Student.countDocuments(StudentQuery),
+    StudentQuery.sort({ [sortBy]: sortOrder })
+      .skip(skip)
+      .limit(perPage),
   ]);
   const totalPages = Math.ceil(total / perPage);
   return {

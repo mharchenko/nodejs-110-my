@@ -9,10 +9,23 @@ import {
   updateStudent,
 } from '../services/students.js';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
+import { parseSortParams } from '../utils/parseSortParams.js';
+import { parseFilterParams } from '../utils/parseFilterParams.js';
 
 export async function getStudentsController(req, res, next) {
   const { page, perPage } = parsePaginationParams(req.query);
-  const response = await getStudents({ page, perPage });
+  const { sortBy, sortOrder } = parseSortParams(req.query);
+
+  // console.log({ sortBy, sortOrder });
+  const { filter } = parseFilterParams(req.query);
+
+  const response = await getStudents({
+    page,
+    perPage,
+    sortBy,
+    sortOrder,
+    filter,
+  });
   // undefined();
 
   // console.log({ page, perPage });
